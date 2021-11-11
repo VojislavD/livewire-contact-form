@@ -4,6 +4,7 @@ namespace VojislavD\LivewireContactForm;
 
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use VojislavD\LivewireContactForm\Console\Commands\InstallLivewireContactForm;
 use VojislavD\LivewireContactForm\Http\Livewire\ContactForm;
 
 class LivewireContactFormServiceProvider extends ServiceProvider
@@ -20,8 +21,12 @@ class LivewireContactFormServiceProvider extends ServiceProvider
         Livewire::component('livewireContactForm:contact-form', ContactForm::class);
 
         if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallLivewireContactForm::class
+            ]);
+
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('livewirecontactform.php')
+                __DIR__.'/../config/config.php' => config_path('livewireContactForm.php')
             ], 'config');
 
             $this->publishes([
