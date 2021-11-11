@@ -34,7 +34,7 @@ class ContactFormMail extends Mailable
      */
     public function build()
     {
-        return $this->subject(config('app.url').' - Contact Form')
+        return $this->subject(config('app.name').' - Contact Form')
             ->replyTo($this->email)
             ->markdown('livewireContactForm::mail.contact-form-mail');
     }
