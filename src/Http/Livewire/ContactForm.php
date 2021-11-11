@@ -30,7 +30,7 @@ class ContactForm extends Component
     {
         $this->validate();
 
-        Mail::to('receive@example.com')
+        Mail::to(config('livewireContactForm.mail.to'))
             ->send(new ContactFormMail($this->name, $this->email, $this->body));
 
         if (Mail::failures()) {
