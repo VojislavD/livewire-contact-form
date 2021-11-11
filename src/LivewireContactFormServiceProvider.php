@@ -18,5 +18,11 @@ class LivewireContactFormServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'livewireContactForm');
         
         Livewire::component('livewireContactForm:contact-form', ContactForm::class);
+
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/config.php' => config_path('livewirecontactform.php')
+            ], 'config');
+        }
     }
 }
