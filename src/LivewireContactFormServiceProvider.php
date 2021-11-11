@@ -31,6 +31,10 @@ class LivewireContactFormServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/Http/Livewire' => app_path('Http/Livewire')
             ], 'livewire-components');
+
+            $this->publishes([
+                __DIR__.'/Mail' => app_path('Mail')
+            ], 'mail');
         }
     }
 }
