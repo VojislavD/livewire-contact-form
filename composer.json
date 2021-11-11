@@ -9,6 +9,13 @@
             "email": "vojislavdragicevic17@gmail.com"
         }
     ],
+    "require": {
+        "livewire/livewire": "^2.7"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
     "autoload": {
         "psr-4": {
             "VojislavD\\LivewireContactForm\\": "src"
@@ -20,18 +27,11 @@
             "VojislavD\\LivewireContactForm\\Database\\Factories\\": "database/factories"
         }
     },
-    "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.5"
-    },
     "extra": {
         "laravel": {
             "providers": [
                 "VojislavD\\LivewireContactForm\\LivewireContactFormServiceProvider"
             ]
         }
-    },
-    "require": {
-        "livewire/livewire": "^2.7"
     }
 }
