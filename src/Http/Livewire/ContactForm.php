@@ -2,7 +2,9 @@
 
 namespace VojislavD\LivewireContactForm\Http\Livewire;
 
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
+use VojislavD\LivewireContactForm\Mail\ContactFormMail;
 
 class ContactForm extends Component
 {
@@ -28,11 +30,19 @@ class ContactForm extends Component
     {
         $this->validate();
 
-        dd('submit');
+        Mail::to('receive@example.com')
+            ->send(new ContactFormMail($this->name, $this->email, $this->body));
+
+        if (Mail::failures()) {
+            session()->flash('emailNotSent', __('Something went wrong, please try again.'));
+        } else {
+            session()->flash('emailSent', __('Email successfully sent. We will respond to you as soon as possible.'));
+            $this->reset(['name', 'email', 'body']);
+        }
     }
 
     public function render()
     {
-        return view('livewireContactForm::livewire.contact-form');
+        return view('livewire.contact-form');
     }
 }
