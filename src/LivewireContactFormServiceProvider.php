@@ -16,7 +16,7 @@ class LivewireContactFormServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'livewireContactForm');
-
+        
         Livewire::component('livewireContactForm:contact-form', ContactForm::class);
     }
 }

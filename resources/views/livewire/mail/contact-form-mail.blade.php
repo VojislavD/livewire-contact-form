@@ -1,8 +1,9 @@
-@component('mail::message')
-<b>Name:</b> {{ $name }}
-
-<b>Email:</b> {{ $email }}
-
-<b>Message:</b> {{ $body }}
-
-@endcomponent
+<p>
+    <b>Name:</b> {{ $name }}
+</p>
+<p>
+    <b>Email:</b> {{ $email }}
+</p>
+<p>
+    <b>Message:</b> {{ $body }}
+</p>
