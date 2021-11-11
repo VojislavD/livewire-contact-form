@@ -30,12 +30,12 @@ class ContactForm extends Component
     {
         $this->validate();
 
-        Mail::to(config('livewireContactForm.mail.to'))
-            ->send(new ContactFormMail($this->name, $this->email, $this->body));
-
-        if (Mail::failures()) {
+        if(! config('livewireContactForm.mail.to')) {
             session()->flash('emailNotSent', __('Something went wrong, please try again.'));
         } else {
+            Mail::to(config('livewireContactForm.mail.to'))
+                ->send(new ContactFormMail($this->name, $this->email, $this->body));
+                
             session()->flash('emailSent', __('Email successfully sent. We will respond to you as soon as possible.'));
             $this->reset(['name', 'email', 'body']);
         }
