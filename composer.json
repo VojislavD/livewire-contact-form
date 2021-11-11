@@ -1,0 +1,34 @@
+{
+    "name": "vojislavd/livewire-contact-form",
+    "description": "Send email from contact form with Livewire",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vojislav Dragicevic",
+            "email": "vojislavdragicevic17@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "VojislavD\\LivewireContactForm\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "VojislavD\\LivewireContactForm\\Tests\\": "tests",
+            "VojislavD\\LivewireContactForm\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "VojislavD\\LivewireContactForm\\LivewireContactFormServiceProvider"
+            ]
+        }
+    }
+}
