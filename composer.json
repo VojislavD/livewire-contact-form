@@ -30,5 +30,8 @@
                 "VojislavD\\LivewireContactForm\\LivewireContactFormServiceProvider"
             ]
         }
+    },
+    "require": {
+        "livewire/livewire": "^2.7"
     }
 }
