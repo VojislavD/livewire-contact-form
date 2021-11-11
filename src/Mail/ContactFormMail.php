@@ -36,6 +36,6 @@ class ContactFormMail extends Mailable
     {
         return $this->subject(config('app.url').' - Contact Form')
             ->replyTo($this->email)
-            ->view('livewireContactForm::mail.contact-form');
+            ->view('livewireContactForm::mail.contact-form-mail');
     }
 }
