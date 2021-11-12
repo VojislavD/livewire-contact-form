@@ -23,9 +23,11 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "VojislavD\\LivewireContactForm\\Tests\\": "tests",
-            "VojislavD\\LivewireContactForm\\Database\\Factories\\": "database/factories"
+            "VojislavD\\LivewireContactForm\\Tests\\": "tests"
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     },
     "extra": {
         "laravel": {
