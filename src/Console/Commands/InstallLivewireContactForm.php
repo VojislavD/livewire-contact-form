@@ -48,7 +48,7 @@ class InstallLivewireContactForm extends Command
         } else {
             if ($this->shouldOverwriteConfig()) {
                 $this->info('Overwriting configuration file...');
-                $this->publishConfiguration($force = false);
+                $this->publishConfiguration($force = true);
             } else {
                 $this->info('Existing configuration was not overwritten.');
             }

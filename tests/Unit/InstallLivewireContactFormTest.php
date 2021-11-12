@@ -37,7 +37,7 @@ class InstallLivewireContactFormTest extends TestCase
         // When install command runs
         $command = $this->artisan('livewirecontactform:install');
 
-        // Excepted a warning that configuration file already exists
+        // Expected a warning that configuration file already exists
         $command->expectsConfirmation(
             'Config file already exists. Do you want to overwrite it?',
             // When answered with 'no'
@@ -49,5 +49,39 @@ class InstallLivewireContactFormTest extends TestCase
 
         // Assert that the original content of the config file remain
         $this->assertEquals('Test Content', file_get_contents(config_path('livewireContactForm.php')));
+    }
+
+    /**
+     * @test
+     */
+    public function when_a_config_file_is_present_user_can_choose_to_overwrite_it()
+    {
+        // Create config file to already exists when install command check it
+        File::put(config_path('livewireContactForm.php'), 'Test Content');
+        $this->assertTrue(File::exists(config_path('livewireContactForm.php')));
+
+        // When install command runs
+        $command = $this->artisan('livewirecontactform:install');
+
+        // Expected a warning that configuration file already exists
+        $command->expectsConfirmation(
+            'Config file already exists. Do you want to overwrite it?',
+            // When answered with 'yes'
+            'yes'
+        );
+
+        // Execute the command to force override
+        $command->execute();
+
+        $command->expectsOutput('Overwriting configuration file...');
+
+        // Assert that the original content are overwritten
+        $this->assertEquals(
+            file_get_contents(__DIR__.'/../../config/config.php'),
+            file_get_contents(config_path('livewireContactForm.php'))
+        );
+
+        // Clean up
+        unlink(config_path('livewireContactForm.php'));
     }
 }
