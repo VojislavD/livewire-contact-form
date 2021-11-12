@@ -2,6 +2,7 @@
 
 namespace VojislavD\LivewireContactForm\Tests\Feature;
 
+use Illuminate\Support\Facades\Mail;
 use Livewire\Livewire;
 use VojislavD\LivewireContactForm\Http\Livewire\ContactForm;
 use VojislavD\LivewireContactForm\Mail\ContactFormMail;
@@ -58,5 +59,23 @@ class SendMessageTest extends TestCase
         $mail->assertSeeInHtml($name)
             ->assertSeeInHtml($email)
             ->assertSeeInHtml($body);
+    }
+
+    /**
+     * @test
+     */
+    public function test_email_sending()
+    {
+        Mail::fake();
+
+        Livewire::test(ContactForm::class)
+            ->set('name', 'John Doe')
+            ->set('email', 'johdoe@example.com')
+            ->set('body', 'Hello World!')
+            ->call('submit')
+            ->assertHasNoErrors()
+            ->assertSee(__('Email successfully sent. We will respond to you as soon as possible.'));
+
+        Mail::assertSent(ContactFormMail::class);
     }
 }
