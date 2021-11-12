@@ -42,7 +42,7 @@ class InstallLivewireContactForm extends Command
 
         $this->info('Publishing configuration...');
 
-        if (! $this->configExists('livewirecontactform.php')) {
+        if (! $this->configExists('livewireContactForm.php')) {
             $this->publishConfiguration();
             $this->info('Published configuration.');
         } else {

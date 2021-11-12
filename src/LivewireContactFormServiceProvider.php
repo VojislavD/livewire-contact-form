@@ -11,7 +11,7 @@ class LivewireContactFormServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'livewireContactForm');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'livewireContactForm.php');
     }
 
     public function boot()
