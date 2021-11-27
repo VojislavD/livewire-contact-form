@@ -1,7 +1,11 @@
 {
     "name": "vojislavd/livewire-contact-form",
     "description": "Send email from contact form with Livewire",
-    "type": "library",
+    "keywords": [
+        "vojislavd",
+        "laravel",
+        "livewire-contact-form"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -29,11 +33,16 @@
     "scripts": {
         "test": "vendor/bin/phpunit"
     },
+    "config": {
+        "sort-packages": true
+    },
     "extra": {
         "laravel": {
             "providers": [
                 "VojislavD\\LivewireContactForm\\LivewireContactFormServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
